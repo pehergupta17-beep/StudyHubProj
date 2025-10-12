@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}StudyHub - High School Success Platform{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#7C3AED',
+                        accent: '#F59E0B'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-primary">StudyHub</h1>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="/" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+                    <a href="/deadlines" class="text-gray-700 hover:text-primary transition-colors">Deadlines</a>
+                    <a href="/pomodoro" class="text-gray-700 hover:text-primary transition-colors">Pomodoro</a>
+                    <a href="/quotes" class="text-gray-700 hover:text-primary transition-colors">Motivation</a>
+                    <a href="/todo" class="text-gray-700 hover:text-primary transition-colors">To-Do</a>
+                    <a href="/calendar" class="text-gray-700 hover:text-primary transition-colors">Calendar</a>
+                    <a href="/chat" class="text-gray-700 hover:text-primary transition-colors">AI Assistant</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-primary">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="/" class="block py-2 text-gray-700 hover:text-primary">Home</a>
+                <a href="/deadlines" class="block py-2 text-gray-700 hover:text-primary">Deadlines</a>
+                <a href="/pomodoro" class="block py-2 text-gray-700 hover:text-primary">Pomodoro</a>
+                <a href="/quotes" class="block py-2 text-gray-700 hover:text-primary">Motivation</a>
+                <a href="/todo" class="block py-2 text-gray-700 hover:text-primary">To-Do</a>
+                <a href="/calendar" class="block py-2 text-gray-700 hover:text-primary">Calendar</a>
+                <a href="/chat" class="block py-2 text-gray-700 hover:text-primary">AI Assistant</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>&copy; 2024 StudyHub. Empowering students to achieve their goals.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,8 @@
+flask
+flask-SQLAlchemy
+python-dotenv
+google-generativeai
+chromadb
+sentence-transformers
+numpy
+requests

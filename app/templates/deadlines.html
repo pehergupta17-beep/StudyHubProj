@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}Deadlines - StudyHub{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-center mb-8 text-gray-800">Deadline Tracker</h1>
+
+    <!-- Add Deadline Form -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Add New Deadline</h2>
+        <form id="deadline-form" class="space-y-4">
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <label for="deadline-title" class="block text-sm font-medium text-gray-700 mb-2">Assignment/Task Title</label>
+                    <input type="text" id="deadline-title" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+                <div>
+                    <label for="deadline-date" class="block text-sm font-medium text-gray-700 mb-2">Due Date</label>
+                    <input type="date" id="deadline-date" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <label for="deadline-priority" class="block text-sm font-medium text-gray-700 mb-2">Priority Level</label>
+                    <select id="deadline-priority" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                        <option value="">Select Priority</option>
+                        <option value="high">High Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="low">Low Priority</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="deadline-subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                    <input type="text" id="deadline-subject" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                </div>
+            </div>
+            <div>
+                <label for="deadline-description" class="block text-sm font-medium text-gray-700 mb-2">Description (Optional)</label>
+                <textarea id="deadline-description" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+            </div>
+            <button type="submit" class="btn-primary text-white px-6 py-2 rounded-md font-semibold">
+                Add Deadline
+            </button>
+        </form>
+    </div>
+
+    <!-- Filter Options -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-xl font-semibold mb-4">Filter Deadlines</h2>
+        <div class="flex flex-wrap gap-4">
+            <button class="filter-btn active px-4 py-2 rounded-md bg-primary text-white" data-filter="all">All</button>
+            <button class="filter-btn px-4 py-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300" data-filter="urgent">Urgent (< 7 days)</button>
+            <button class="filter-btn px-4 py-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300" data-filter="high">High Priority</button>
+            <button class="filter-btn px-4 py-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300" data-filter="medium">Medium Priority</button>
+            <button class="filter-btn px-4 py-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300" data-filter="low">Low Priority</button>
+        </div>
+    </div>
+
+    <!-- Deadlines List -->
+    <div class="mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Your Deadlines</h2>
+        <div id="deadlines-list" class="space-y-4">
+            <!-- Sample deadlines will be added here by JavaScript -->
+            <div class="text-center py-8 text-gray-500">
+                <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                </svg>
+                <p>No deadlines added yet. Add your first deadline above!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Overview -->
+    <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800">This Week's Overview</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded-lg text-center">
+                <div class="text-2xl font-bold text-red-500" id="urgent-count">0</div>
+                <p class="text-gray-600">Urgent Deadlines</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg text-center">
+                <div class="text-2xl font-bold text-yellow-500" id="upcoming-count">0</div>
+                <p class="text-gray-600">This Week</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg text-center">
+                <div class="text-2xl font-bold text-green-500" id="completed-count">0</div>
+                <p class="text-gray-600">Completed</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Enhanced deadline functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(b => {
+                    b.classList.remove('active', 'bg-primary', 'text-white');
+                    b.classList.add('bg-gray-200', 'text-gray-700');
+                });
+                btn.classList.add('active', 'bg-primary', 'text-white');
+                btn.classList.remove('bg-gray-200', 'text-gray-700');
+
+                // Filter deadlines (would be implemented with your data)
+                const filter = btn.getAttribute('data-filter');
+                filterDeadlines(filter);
+            });
+        });
+
+        function filterDeadlines(filter) {
+            // This would filter the displayed deadlines based on the selected filter
+            console.log('Filtering by:', filter);
+        }
+
+        // Update overview counts
+        updateOverviewCounts();
+    });
+
+    function updateOverviewCounts() {
+        // These would be calculated from actual deadline data
+        document.getElementById('urgent-count').textContent = Math.floor(Math.random() * 5) + 1;
+        document.getElementById('upcoming-count').textContent = Math.floor(Math.random() * 8) + 2;
+        document.getElementById('completed-count').textContent = Math.floor(Math.random() * 12) + 5;
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+
+{% block title %}Motivation - StudyHub{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold text-center mb-8 text-gray-800">Daily Motivation</h1>
+
+    <!-- Featured Quote -->
+    <div class="quote-card rounded-2xl p-12 text-center mb-8 shadow-lg">
+        <svg class="w-16 h-16 mx-auto mb-6 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+        </svg>
+        <blockquote class="text-2xl font-medium text-gray-800 mb-6" id="quote-display">
+            "The only way to do great work is to love what you do."
+        </blockquote>
+        <p class="text-gray-600 text-lg" id="quote-author">- Steve Jobs</p>
+        <button id="new-quote" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold mt-6">
+            Get New Quote
+        </button>
+    </div>
+
+    <!-- Quote Categories -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-4">Quote Categories</h2>
+        <div class="grid md:grid-cols-4 gap-4">
+            <button class="category-quote-btn active bg-primary text-white p-4 rounded-lg text-center" data-category="motivation">
+                <div class="text-2xl mb-2">💪</div>
+                <div class="font-semibold">Motivation</div>
+            </button>
+            <button class="category-quote-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-center" data-category="success">
+                <div class="text-2xl mb-2">🏆</div>
+                <div class="font-semibold">Success</div>
+            </button>
+            <button class="category-quote-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-center" data-category="learning">
+                <div class="text-2xl mb-2">📚</div>
+                <div class="font-semibold">Learning</div>
+            </button>
+            <button class="category-quote-btn bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-center" data-category="perseverance">
+                <div class="text-2xl mb-2">🌟</div>
+                <div class="font-semibold">Perseverance</div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Favorite Quotes -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-semibold">Your Favorite Quotes</h2>
+            <button id="save-quote" class="text-yellow-600 hover:text-yellow-800 px-3 py-1 rounded border border-yellow-200 hover:border-yellow-300">
+                ⭐ Save Current Quote
+            </button>
+        </div>
+        <div id="favorite-quotes" class="space-y-4">
+            <p class="text-gray-500 text-center py-8">No favorite quotes saved yet. Save quotes you love!</p>
+        </div>
+    </div>
+
+    <!-- Daily Challenge -->
+    <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6 mb-8">
+        <h2 class="text-2xl font-semibold mb-4 text-purple-800">Today's Positivity Challenge</h2>
+        <div id="daily-challenge" class="bg-white rounded-lg p-6 shadow-sm">
+            <h3 class="text-lg font-semibold mb-2 text-purple-700">Gratitude Practice</h3>
+            <p class="text-gray-700 mb-4">Write down three things you're grateful for today. Gratitude helps shift your mindset to focus on the positive aspects of your life.</p>
+            <div class="space-y-2">
+                <input type="text" placeholder="I'm grateful for..." class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <input type="text" placeholder="I'm grateful for..." class="w-full px-3 py-2 border border-gray-300 rounded-md">
+                <input type="text" placeholder="I'm grateful for..." class="w-full px-3 py-2 border border-gray-300 rounded-md">
+            </div>
+            <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md mt-4">
+                Complete Challenge
+            </button>
+        </div>
+    </div>
+
+    <!-- Quote Sharing -->
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4">Share the Inspiration</h2>
+        <p class="text-gray-600 mb-4">Found a quote that inspired you? Share it with friends!</p>
+        <div class="flex gap-4">
+            <button class="flex items-center bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                </svg>
+                Share on Twitter
+            </button>
+            <button class="flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7z" clip-rule="evenodd"></path>
+                </svg>
+                Share on WhatsApp
+            </button>
+            <button class="flex items-center bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-md">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                </svg>
+                Copy Link
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const quotes = {
+        motivation: [
+            { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+            { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill" },
+            { text: "Don't watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
+            { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
+            { text: "It is during our darkest moments that we must focus to see the light.", author: "Aristotle" }
+        ],
+        success: [
+            { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
+            { text: "The way to get started is to quit talking and begin doing.", author: "Walt Disney" },
+            { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs" },
+            { text: "Success is walking from failure to failure with no loss of enthusiasm.", author: "Winston Churchill" },
+            { text: "The only impossible journey is the one you never begin.", author: "Tony Robbins" }
+        ],
+        learning: [
+            { text: "Education is the most powerful weapon which you can use to change the world.", author: "Nelson Mandela" },
+            { text: "The more that you read, the more things you will know.", author: "Dr. Seuss" },
+            { text: "Learning never exhausts the mind.", author: "Leonardo da Vinci" },
+            { text: "An investment in knowledge pays the best interest.", author: "Benjamin Franklin" },
+            { text: "The beautiful thing about learning is that no one can take it away from you.", author: "B.B. King" }
+        ],
+        perseverance: [
+            { text: "It's not that I'm so smart, it's just that I stay with problems longer.", author: "Albert Einstein" },
+            { text: "Perseverance is not a long race; it is many short races one after the other.", author: "Walter Elliot" },
+            { text: "The difference between ordinary and extraordinary is that little extra.", author: "Jimmy Johnson" },
+            { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+            { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" }
+        ]
+    };
+
+    let currentCategory = 'motivation';
+    let favoriteQuotes = JSON.parse(localStorage.getItem('favoriteQuotes')) || [];
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Category switching
+        const categoryButtons = document.querySelectorAll('.category-quote-btn');
+        categoryButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                categoryButtons.forEach(b => {
+                    b.classList.remove('active', 'bg-primary', 'text-white');
+                    b.classList.add('bg-gray-100', 'hover:bg-gray-200');
+                });
+                btn.classList.add('active', 'bg-primary', 'text-white');
+                btn.classList.remove('bg-gray-100', 'hover:bg-gray-200');
+
+                currentCategory = btn.getAttribute('data-category');
+                displayRandomQuote();
+            });
+        });
+
+        // New quote button
+        document.getElementById('new-quote').addEventListener('click', displayRandomQuote);
+
+        // Save quote button
+        document.getElementById('save-quote').addEventListener('click', saveCurrentQuote);
+
+        // Initialize
+        displayRandomQuote();
+        renderFavoriteQuotes();
+    });
+
+    function displayRandomQuote() {
+        const categoryQuotes = quotes[currentCategory];
+        const randomQuote = categoryQuotes[Math.floor(Math.random() * categoryQuotes.length)];
+
+        document.getElementById('quote-display').textContent = `"${randomQuote.text}"`;
+        document.getElementById('quote-author').textContent = `- ${randomQuote.author}`;
+    }
+
+    function saveCurrentQuote() {
+        const quoteText = document.getElementById('quote-display').textContent;
+        const quoteAuthor = document.getElementById('quote-author').textContent;
+
+        const quote = {
+            text: quoteText,
+            author: quoteAuthor,
+            savedAt: new Date().toLocaleDateString()
+        };
+
+        // Check if quote is already saved
+        const isAlreadySaved = favoriteQuotes.some(fq => fq.text === quote.text);
+
+        if (!isAlreadySaved) {
+            favoriteQuotes.push(quote);
+            localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotes));
+            renderFavoriteQuotes();
+            showNotification('Quote saved to favorites!');
+        } else {
+            showNotification('Quote is already in your favorites!');
+        }
+    }
+
+    function renderFavoriteQuotes() {
+        const container = document.getElementById('favorite-quotes');
+
+        if (favoriteQuotes.length === 0) {
+            container.innerHTML = '<p class="text-gray-500 text-center py-8">No favorite quotes saved yet. Save quotes you love!</p>';
+            return;
+        }
+
+        container.innerHTML = favoriteQuotes.map((quote, index) => `
+            <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-yellow-400">
+                <blockquote class="text-gray-800 font-medium mb-2">${quote.text}</blockquote>
+                <div class="flex justify-between items-center">
+                    <p class="text-gray-600 text-sm">${quote.author}</p>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs text-gray-500">Saved ${quote.savedAt}</span>
+                        <button onclick="removeFavoriteQuote(${index})" class="text-red-500 hover:text-red-700">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function removeFavoriteQuote(index) {
+        favoriteQuotes.splice(index, 1);
+        localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotes));
+        renderFavoriteQuotes();
+        showNotification('Quote removed from favorites.');
+    }
+
+    // Share functionality
+    document.querySelectorAll('[class*="bg-blue-500"], [class*="bg-green-500"], [class*="bg-gray-500"]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const quoteText = document.getElementById('quote-display').textContent;
+            const quoteAuthor = document.getElementById('quote-author').textContent;
+            const fullQuote = `${quoteText} ${quoteAuthor}`;
+
+            if (this.textContent.includes('Twitter')) {
+                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(fullQuote)}`, '_blank');
+            } else if (this.textContent.includes('WhatsApp')) {
+                window.open(`https://wa.me/?text=${encodeURIComponent(fullQuote)}`, '_blank');
+            } else if (this.textContent.includes('Copy')) {
+                navigator.clipboard.writeText(fullQuote).then(() => {
+                    showNotification('Quote copied to clipboard!');
+                });
+            }
+        });
+    });
+</script>
+{% endblock %}
