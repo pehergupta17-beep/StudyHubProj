@@ -1,33 +1,33 @@
-# 🎓 StudyHub - High School Success Platform
+# StudIQ - Academic Success Platform
 
-A comprehensive web application designed to help high school students achieve academic success through smart study tools, AI-powered assistance, and productivity features.
+A comprehensive web application designed to help high school students achieve academic success through smart study techniques, AI-powered assistance, and productivity features.
 
 ![StudyHub Banner](https://via.placeholder.com/800x200/4F46E5/white?text=StudyHub+-+Your+Path+to+Academic+Success)
 
-## ✨ Features
+## Features
 
-### 📅 **Academic Management**
+### **Academic Management**
 - **Deadline Tracker**: Manage assignments with priority levels and urgency indicators
 - **Interactive Calendar**: Schedule events, track deadlines, and view academic timeline
 - **Smart To-Do Lists**: Organize tasks with categories, progress tracking, and completion stats
 
-### ⏰ **Productivity Tools**
+### **Productivity Tools**
 - **Pomodoro Timer**: 25-minute focused study sessions with customizable breaks
 - **Time Management**: Built-in productivity techniques and scheduling tools
 - **Progress Tracking**: Visual indicators for daily and weekly achievements
 
-### 💪 **Motivation & Wellness**
+### **Motivation & Wellness**
 - **Daily Quotes**: Inspirational messages categorized by themes
 - **Positivity Challenges**: Interactive activities to build positive mindset
 - **Favorite Quotes**: Save and organize meaningful quotes
 
-### 🤖 **AI-Powered Study Assistant**
+### **AI-Powered Study Assistant**
 - **GEMINI Integration**: Advanced AI chatbot powered by Google's GEMINI Pro
 - **Context-Aware Conversations**: Remembers your study patterns and preferences
 - **Persistent Memory**: Vector database stores conversation history for personalized responses
 - **Study Knowledge Base**: Pre-loaded with comprehensive academic guidance
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -70,7 +70,7 @@ A comprehensive web application designed to help high school students achieve ac
    http://localhost:5000
    ```
 
-## 🛠️ Manual Setup (Alternative)
+## Manual Setup (Alternative)
 
 If you prefer manual installation:
 
@@ -95,7 +95,7 @@ If you prefer manual installation:
    python app.py
    ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 StudyHub/
@@ -130,7 +130,7 @@ StudyHub/
 └── README.md                   # Project documentation
 ```
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -160,9 +160,9 @@ CHROMA_PERSIST_DIRECTORY=./chroma_db
 4. Add the key to your `.env` file
 5. Restart the application
 
-## 🎯 Usage Guide
+## Usage Guide
 
-### 📚 Study Assistant Features
+### Study Assistant Features
 
 **Getting Study Help:**
 - Ask questions about any academic subject
@@ -175,7 +175,7 @@ CHROMA_PERSIST_DIRECTORY=./chroma_db
 - Browse study knowledge base
 - Get subject-specific guidance
 
-### 📅 Academic Planning
+### Academic Planning
 
 **Deadline Management:**
 - Add assignments with due dates and priority levels
@@ -187,7 +187,7 @@ CHROMA_PERSIST_DIRECTORY=./chroma_db
 - View weekly and monthly academic overview
 - Track progress and milestones
 
-### ⏱️ Productivity Features
+### Productivity Features
 
 **Pomodoro Sessions:**
 - Customize work and break intervals
@@ -199,7 +199,7 @@ CHROMA_PERSIST_DIRECTORY=./chroma_db
 - Monitor completion rates and productivity scores
 - Clear completed tasks and sort by importance
 
-## 🔌 API Endpoints
+## API Endpoints
 
 ### Chat API
 - `POST /api/chat` - Send message to AI assistant
@@ -225,7 +225,7 @@ fetch('/api/chat', {
 .then(data => console.log(data.response));
 ```
 
-## 🧠 AI Knowledge Base
+## AI Knowledge Base
 
 The AI assistant comes pre-loaded with comprehensive knowledge about:
 
@@ -235,7 +235,7 @@ The AI assistant comes pre-loaded with comprehensive knowledge about:
 - **Test Preparation**: Study strategies, anxiety management, test-taking skills
 - **Motivation**: Growth mindset, goal setting, stress management
 
-## 🛡️ Technology Stack
+## Technology Stack
 
 - **Backend**: Flask (Python)
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
@@ -245,7 +245,7 @@ The AI assistant comes pre-loaded with comprehensive knowledge about:
 - **Data Storage**: SQLite (development), PostgreSQL (production ready)
 - **Session Management**: Flask sessions with secure cookies
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions from the community! Here's how you can help:
 
@@ -260,12 +260,12 @@ We welcome contributions from the community! Here's how you can help:
 
 ### Areas for Contribution
 
-- 🎨 **UI/UX Improvements**: Enhance the user interface and experience
-- 🧠 **AI Features**: Expand the knowledge base or improve AI responses
-- 📱 **Mobile Optimization**: Improve mobile responsiveness
-- 🔧 **Performance**: Optimize loading times and efficiency
-- 📚 **Documentation**: Improve guides and documentation
-- 🧪 **Testing**: Add unit tests and integration tests
+- **UI/UX Improvements**: Enhance the user interface and experience
+- **AI Features**: Expand the knowledge base or improve AI responses
+- **Mobile Optimization**: Improve mobile responsiveness
+- **Performance**: Optimize loading times and efficiency
+- **Documentation**: Improve guides and documentation
+- **Testing**: Add unit tests and integration tests
 
 ### Development Guidelines
 
@@ -275,7 +275,7 @@ We welcome contributions from the community! Here's how you can help:
 - Test your changes before submitting
 - Update documentation when needed
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -306,11 +306,11 @@ We welcome contributions from the community! Here's how you can help:
 - Join our community discussions
 - Contact the maintainers
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Google GEMINI**: For providing advanced AI capabilities
 - **ChromaDB**: For vector database functionality
@@ -318,9 +318,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Flask Community**: For the excellent web framework
 - **Open Source Contributors**: For various libraries and tools used
 
-## 🚀 Roadmap
+## Roadmap
 
-### Upcoming Features
+### Potential Upcoming Features
 
 - [ ] **Mobile App**: Native iOS and Android applications
 - [ ] **Study Groups**: Collaborative study spaces
@@ -338,15 +338,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Advanced AI tutoring capabilities
 - Personalized learning path recommendations
 - Community-driven study resources
-
-## 📞 Support
-
-Need help? We're here for you!
-
-- 📧 **Email**: support@studyhub.com
-- 💬 **Discord**: [Join our community](https://discord.gg/studyhub)
-- 📖 **Documentation**: [Full documentation](https://docs.studyhub.com)
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/yourusername/studyhub/issues)
 
 ---
 
